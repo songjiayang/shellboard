@@ -1,5 +1,5 @@
-role :app, %w{deploy@example.com}
-role :web, %w{deploy@example.com}
-role :db,  %w{deploy@example.com}
+set :stage, :staging
 
-server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
+server 'shellboard.com', user: 'deploy', roles: %w{web app db}
+set :deploy_to, '/var/www/shellboard-staging'
+set :branch, "master"

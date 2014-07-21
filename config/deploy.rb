@@ -4,8 +4,6 @@ lock '3.2.1'
 
 set :application, 'shellboard'
 set :repo_url, 'git@github.com:songjiayang/shellboard.git'
-set :deploy_to, '/var/www/shellboard'
-set :branch, "master"
 
 set :scm, :git
 set :user, :deploy
