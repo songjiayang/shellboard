@@ -20,7 +20,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 gem 'puma', '~> 2.9.0'
-gem 'slim', '~> 2.0.3'
         
 group :development do 
 	# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
