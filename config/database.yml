@@ -1,0 +1,16 @@
+development: &default
+  adapter: mysql2
+  database: shellboard_dev
+  pool: 25
+  timeout: 5000
+  encoding: utf8
+
+production:
+  <<: *default
+  database: shellboard_production
+
+test: &test
+  <<: *default
+  database: shellboard_test
+  pool: 5
+  timeout: 5000
