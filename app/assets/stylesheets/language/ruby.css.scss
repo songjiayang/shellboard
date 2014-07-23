@@ -1,0 +1,15 @@
+body.ruby{
+  background: #f1f0e8;
+  margin: 0px;
+  font-family: Geneva, 'Helvetica Neue', Helvetica, Arial, 'Apple LiGothic', 'Microsoft JhengHei', sans-serif;
+  color: #000;
+
+  header {
+    #logo{
+      background-image: url(/assets/ruby-logo.png);
+    }
+    span.lang{
+      color: #b40e12;
+    }
+  }
+}
