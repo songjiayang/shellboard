@@ -32,7 +32,7 @@
       h1 {
         font-size: 56px;
       }
-      
+
       .right{
         form{
           float: left;
@@ -46,6 +46,10 @@
           }
           .submit{
             padding-left: 0px;
+          }
+          input[type='email']{
+            height: 20px;
+            margin-top: 8px;
           }
         }
       }

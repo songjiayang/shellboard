@@ -6,7 +6,7 @@ body.ruby{
 
   header {
     #logo{
-      background-image: url(/assets/ruby-logo.png);
+      background-image: url(asset-path('ruby-logo.png'));
     }
     span.lang{
       color: #b40e12;
