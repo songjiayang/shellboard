@@ -54,5 +54,36 @@
         }
       }
     }
+
+    #main-box{
+      background: #fdfefe url(asset-path('paper-edge.png')) right top repeat-y;
+      margin-bottom: 40px;
+      #main-box-inner {
+        background: url(asset-path('paper-crease.png')) right bottom no-repeat;
+        padding: 20px 20px 63px;
+        position: relative;
+        .post-job {
+          margin: 20px;
+          a{
+            float: right
+          }
+        }
+
+        .joblist {
+          width: 100%;
+          th {
+            border-bottom: 3px solid #d2d8d9;
+            padding-bottom: 0.7em;
+            font-size: 116%;
+            text-align: left;
+          }
+          td {
+            border: 0;
+            border-bottom: 1px solid #e6ebec;
+            padding: 1em 0.5em;
+          }
+        } 
+      }
+    }
   }
  }
