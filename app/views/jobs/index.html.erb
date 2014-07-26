@@ -5,11 +5,11 @@
 <table class='joblist' cellspacing="0">
   <thead>
     <tr>
-      <th>张贴<br/>日期</th>
+      <th width='5%'>张贴<br/>日期</th>
       <th>工作职称</th>
       <%unless mobile_device? %>
-        <th>公司<br/>名称</th>
-        <th>工作</br>地点</th>
+        <th width='15%'>公司<br/>名称</th>
+        <th width='15%'>工作</br>地点</th>
       <%end%>
     </tr>
   </thead>
@@ -17,12 +17,12 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= job.title %></td>
+        <td><%= job.created_at.to_date %></td>
         <td>
-          <%= link_to job.company_name, job %>
+          <%= link_to job.title, job %>
         </td>
         <%unless mobile_device? %>
-          <td><%= job.occupation %></td>
+          <td><%= job.company_name %></td>
           <td><%= job.location %></td>
         <%end%>
       </tr>
