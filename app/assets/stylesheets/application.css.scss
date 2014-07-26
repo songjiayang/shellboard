@@ -55,6 +55,11 @@ body {
             }
             .submit{
               float: left;
+              button{
+                font-size: 12px;
+                padding: 2px 6px;
+                margin-top: 6px;
+              }
             }
             input[type='email']{
               height: 20px;
@@ -155,7 +160,10 @@ body.mobile {
 
         .joblist {
           width: 100%;
-          th {font-size: 100%;}
+          th {
+            font-size: 100%;
+            font-weight: 100;
+          }
           td {
             font-size: 80%;
             border: 0;

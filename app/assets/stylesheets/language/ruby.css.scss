@@ -14,5 +14,19 @@ body.ruby{
   }
 
   a{ color: #b40e12;}
-  
+
+  .right{
+    form{
+      .form-group{
+        .submit{
+          float: left;
+          button{
+            color: #fff;
+            background-color: #d9534f;
+            border-color: #d43f3a;
+          }
+        }
+      }
+    }
+  }
 }
