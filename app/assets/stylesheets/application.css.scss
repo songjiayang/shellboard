@@ -81,6 +81,14 @@ body {
         background: url(asset-path('paper-crease.png')) right bottom no-repeat;
         padding: 20px 20px 63px;
         position: relative;
+
+        .pagetitle{
+          border-bottom: 1px solid #e6ebec;
+          margin: 1em 0 1.4em;
+          padding-bottom: 0.6em;
+          font-family: Verdana, Geneva, sans-serif;
+          font-size: 150%;
+        }
         .post-job {
           margin: 20px;
           a{
@@ -103,12 +111,11 @@ body {
           }
         } 
 
-        .pagetitle{
-          border-bottom: 1px solid #e6ebec;
-          margin: 1em 0 1.4em;
-          padding-bottom: 0.6em;
-          font-family: Verdana, Geneva, sans-serif;
-          font-size: 150%;
+        .job-content{
+          .date{
+            font-weight: bold;
+            color: #969696;
+          }
         }
       }
     }
@@ -178,6 +185,33 @@ body.desktop {
           }
         }
       }
+
+      .job-content{
+        .job-title{
+          margin-left: 12px;
+          padding-bottom: 10px;
+        }
+        .job-info{
+          margin-top: 20px;
+        }
+
+        .job-description{
+          margin-left: 70px;
+          line-height: 28px;
+        }
+        .job-applyinformation{
+          margin-top: 10px;
+        }
+        .row {
+          margin: 10px 0px;
+        }
+        a.back{
+          margin-left: 12px;
+        }
+        .jiathis_style{
+          float: right;
+        }
+      }
     }
   }
  }
@@ -193,6 +227,8 @@ body.mobile {
     h3{
       font-size: 18px;
     }
+
+    h4{font-size: 16px; }
 
     p {
       font-size: 10px;
@@ -250,6 +286,20 @@ body.mobile {
             padding: 1em 0.5em;
           }
         } 
+
+        .job-content{
+          font-size: 10px;
+        }
+        .col-xs-12{
+          margin-bottom: 8px;
+        }
+
+        .job-description{
+          margin-top: 8px;
+        }
+        .job-applyinformation{
+          margin-top: 8px;
+        }
       }
     }
   }   

@@ -1,59 +1,74 @@
-<p id="notice"><%= notice %></p>
+<div class='job-content'>
+  <p id="notice"><%= notice %></p>
+  <h4 class='job-title'><%=@job.title%></h4>
 
-<p>
-  <strong>Title:</strong>
-  <%= @job.title %>
-</p>
+  <div class='row'>
+    <p class='date col-xs-12 col-md-6'>
+      张贴日期: <%=@job.created_at.to_date%>
+      有效期限: <%=(@job.created_at+1.month).to_date%>
+    </p>
 
-<p>
-  <strong>Job type:</strong>
-  <%= @job.job_type %>
-</p>
+    <div class="social col-xs-12 col-md-6">
+     <!-- JiaThis Button BEGIN -->
+      <div class="jiathis_style">
+        <a class="jiathis_button_weixin"></a>
+        <a class="jiathis_button_tsina"></a>
+      </div>
+      <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=1399190709098277" charset="utf-8"></script>
+      <!-- JiaThis Button END -->
+    </div>
+  </div>
 
-<p>
-  <strong>Company name:</strong>
-  <%= @job.company_name %>
-</p>
+  <div class='job-info'>
+    <div class='row'>
+      <div class='col-xs-12 col-md-6'>
+        <strong>工作类型:</strong>
+          <%= Job::JOB_TYPE[@job.job_type]%>
+      </div>
 
-<p>
-  <strong>Occupation:</strong>
-  <%= @job.occupation %>
-</p>
+      <div class='col-xs-12 col-md-6 '>
+         <strong>工作分类:</strong>
+          <%= Job::OCCUPATION[@job.occupation]%>
+      </div>
+    </div>
 
-<p>
-  <strong>Location:</strong>
-  <%= @job.location %>
-</p>
+    <div class='row'>
+      <div class='col-xs-12 col-md-6'>
+         <strong>公司名称:</strong>
+          <%= @job.company_name%>
+      </div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @job.description %>
-</p>
+      <div class='col-xs-12 col-md-6 '>
+         <strong>工作地点:</strong>
+          <%= @job.location%>
+      </div>
+    </div>
 
-<p>
-  <strong>Apply information:</strong>
-  <%= @job.apply_information %>
-</p>
+    <div class='row'>
+      <div class='col-xs-12 col-md-12'>
+         <strong>公司网站:</strong>
+         <%= raw link_to @job.url,  @job.url, :target => "_blank" %>
+      </div>
+    </div>
 
-<p>
-  <strong>Deadline:</strong>
-  <%= @job.deadline %>
-</p>
+    <div class='row'>
+      <div class='col-xs-12 col-md-12'>
+        <strong>工作描述:</strong>
+        <div class='job-description'>
+          <%= simple_format @job.description %>
+        </div>
+      </div>
+    </div>
 
-<p>
-  <strong>Aasm state:</strong>
-  <%= @job.aasm_state %>
-</p>
+    <div class='row'>
+      <div class='col-xs-12 col-md-12'>
+        <strong>如何应征:</strong>
+        <div class='job-applyinformation'>
+          <%= simple_format @job.apply_information%>
+         </div>
+      </div>
+    </div>
 
-<p>
-  <strong>City:</strong>
-  <%= @job.city %>
-</p>
-
-<p>
-  <strong>Identifier:</strong>
-  <%= @job.identifier %>
-</p>
-
-<%= link_to 'Edit', edit_job_path(@job) %> |
-<%= link_to 'Back', jobs_path %>
+  </div>
+  <%= link_to '返回', jobs_path, class: 'back' %>
+</div>
