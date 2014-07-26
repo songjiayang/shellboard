@@ -16,23 +16,28 @@
 
 
 // for destop css
- body {
+body {
   .container.wrapper {
+
+    //common ui 
     width: 70%;
+    h1 { font-size: 56px; }
+
     header{
       margin: 30px 0 25px;
       position: relative;
-      #logo{
-        background-repeat: no-repeat;
-        background-position: top left;
-        float: left;
-        height: 120px;
-        width: 120px;
-        margin-top: 20px;
+
+      .left {
+        #logo{
+          background-repeat: no-repeat;
+          background-position: top left;
+          float: left;
+          height: 120px;
+          width: 120px;
+          margin-top: 20px;
+        }
       }
-      h1 {
-        font-size: 56px;
-      }
+     
       .right{
         form{
           width: 100%;
