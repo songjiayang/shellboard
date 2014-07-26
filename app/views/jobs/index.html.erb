@@ -18,7 +18,9 @@
     <% @jobs.each do |job| %>
       <tr>
         <td><%= job.title %></td>
-        <td><%= job.company_name %></td>
+        <td>
+          <%= link_to job.company_name, job %>
+        </td>
         <%unless mobile_device? %>
           <td><%= job.occupation %></td>
           <td><%= job.location %></td>

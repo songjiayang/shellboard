@@ -32,11 +32,24 @@ class Job < ActiveRecord::Base
   CITY = %w(北京 上海 杭州 成都 广州 深圳 南京 武汉 西安 大连 青岛 苏州 其他)
   LANGUAGE = %w(ruby) 
  
-  validates :job_type, :inclusion => { :in => 0...JOB_TYPE.length }
-  validates :occupation, :inclusion => { :in => 0...OCCUPATION.length }
+  validates :job_type, :inclusion => { :in => 0..JOB_TYPE.length }
+  validates :occupation, :inclusion => { :in => 0..OCCUPATION.length }
   validates :aasm_state, :inclusion => { :in => [0, 1] }
-  validates :city, :inclusion => { :in => 0...CITY.length }
-  validates :language, :inclusion => { :in => 0...LANGUAGE.length }
-  validates :url, :format => { :with => %r{\Ahttps?://[^/?:]+?\.\w+?(?::[0-9]{1,5})?\/?[^\s:]*?\z}i }, unless: nil
+  validates :city, :inclusion => { :in => 0..CITY.length }
+  validates :language, :inclusion => { :in => 0..LANGUAGE.length }
+  validates :url, :format => { :with => %r{\Ahttps?://[^/?:]+?\.\w+?(?::[0-9]{1,5})?\/?[^\s:]*?\z}i }, allow_blank: true
+
+
+  before_validation :set_identifier, :set_aasm_state, on: :create
+
+  private
+
+  def set_identifier
+    self.identifier = SecureRandom.hex(32)
+  end
+
+  def set_aasm_state
+    self.aasm_state = 0
+  end
 
 end
