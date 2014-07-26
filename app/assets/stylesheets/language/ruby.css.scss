@@ -13,8 +13,6 @@ body.ruby{
     }
   }
 
-  a{ color: #b40e12;}
-
   .right{
     form{
       .form-group{
@@ -29,4 +27,8 @@ body.ruby{
       }
     }
   }
+
+  #main-box{
+    a{ color: #b40e12;}
+  } 
 }
