@@ -5,12 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%=title%></title>
-    <%= stylesheet_link_tag   'application', media: 'all', 'data-turbolinks-track' => true %>
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <%= stylesheet_link_tag   'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   
-  <body class='ruby'>
+  <body class="ruby <%='mobile' if mobile_device?%>">
     <div class='container wrapper'>
 
       <header class='row'>
@@ -26,11 +26,11 @@
           <p>中国最新的Ruby工作，将发送到你邮件（如果订阅成功）。</p>
           <form class="form-horizontal" role="form">
             <div class="form-group">
-              <label for="inputEmail" class="col-sm-2 control-label">邮箱:</label>
-              <div class="col-sm-6 email">
-                <input type="email" class="form-control" id="inputEmail">
+              <label for="inputEmail" class="control-label">邮箱:</label>
+              <div class="email">
+                <input type="email" class="form-control" id="inputEmail" name='email' placeholder='email'>
               </div>
-              <div class='col-sm-3 submit'>
+              <div class='submit'>
                 <button type="submit" class="btn btn-success">订 阅</button>
               <div>
             </div>

@@ -34,11 +34,15 @@ group :development do
 
 	# Annotate the models attributes, https://github.com/ctran/annotate_models
 	gem 'annotate', '~> 2.6.5'
+
 end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.1'
   gem 'factory_girl_rails', '~> 4.4.1'
+
+  #Code Debug: https://github.com/deivid-rodriguez/byebug
+  gem 'byebug', '~> 3.1.2' 
 end
 
 # bundle exec rake doc:rails generates the API under doc/api.
