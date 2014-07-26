@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
+  http_basic_authenticate_with name: Settings.authentication.name, password: Settings.authentication.password, except: [:index, :show]
 
   def index
     @jobs = Job.latest.page(params[:page]).per(25)
