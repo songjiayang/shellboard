@@ -12,55 +12,61 @@
   <% end %>
 
   <div class="field">
-    <%= f.label "工作职称" %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label "公司名称" %><br>
-    <%= f.text_field :company_name %>
+    <%= f.label "工作职称" %>
+    <%= f.text_field :title, class: 'text' %>
   </div>
 
   <div class="field">
-    <%= f.label "URL" %><br>
-    <%= f.text_field :url %>
+    <%= f.label "公司名称" %>
+    <%= f.text_field :company_name, class: 'text' %>
   </div>
 
   <div class="field">
-    <%= f.label "工作类型" %><br>
+    <%= f.label "公司网站" %>
+    <%= f.text_field :url, class: 'text' %>
+  </div>
+
+  <div class="field reset">
+    <%= f.label "工作类型" %>
     <% Job::JOB_TYPE.each_with_index do |t,i| %>
       <%= f.radio_button :job_type, i %> 
       <%= f.label :job_type, t, :value => t, :class => "inline" %>
     <% end %>
   </div>
   
-  <div class="field">
-    <%= f.label "工作分类" %><br>
+  <div class="field reset">
+    <%= f.label "工作分类" %>
     <% Job::OCCUPATION.each_with_index do |o,i| %>
       <%= f.radio_button :occupation, i %> 
       <%= f.label :occupation, o, :value => o, :class => "inline" %>
     <% end %>
   </div>
-  <div class="field">
-    <%= f.label "工作城市" %><br>
+  <div class="field reset">
+    <%= f.label "工作城市" %>
     <% Job::CITY.each_with_index do |c,i| %>
       <%= f.radio_button :city, i %> 
       <%= f.label :city, c, :value => c, :class => "inline" %>
     <% end %>
   </div>
   <div class="field">
-    <%= f.label "工作地址" %><br>
-    <%= f.text_field :location %>
+    <%= f.label "工作地址" %>
+    <%= f.text_field :location, class: 'text' %>
   </div>
   <div class="field">
-    <%= f.label "工作描述" %><br>
-    <%= f.text_area :description %>
+    <%= f.label "工作描述" %>
+    <%= f.text_area :description, class: 'text' %>
   </div>
   <div class="field">
-    <%= f.label "如何应征" %><br>
-    <%= f.text_area :apply_information %>
+    <%= f.label "如何应征" %>
+    <%= f.text_area :apply_information, class: 'text' %>
   </div>
-  <div class="actions">
-    <%= link_to "预览", "#preview", :class => "preview" %>
+
+  <div class="field">
+    <%= f.label "结束日期" %>
+    <%= f.text_field :deadline, class: 'text' %>
+  </div>
+  <div class="actions pull-right">
+<!--     <%= link_to "预览", "#preview", :class => "preview" %> -->
     <%= f.submit "确认提交" %>
   </div>
 <% end %>

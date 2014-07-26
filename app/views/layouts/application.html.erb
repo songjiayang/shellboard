@@ -10,7 +10,7 @@
     <%= csrf_meta_tags %>
   </head>
   
-  <body class="ruby <%='mobile' if mobile_device?%>">
+  <body class="ruby <%=mobile_device? ? 'mobile' : 'desktop'%>">
     <div class='container wrapper'>
 
       <header class='row'>

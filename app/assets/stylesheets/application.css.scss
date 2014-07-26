@@ -102,6 +102,83 @@ body {
             padding: 1em 0.5em;
           }
         } 
+
+        .pagetitle{
+          border-bottom: 1px solid #e6ebec;
+          margin: 1em 0 1.4em;
+          padding-bottom: 0.6em;
+          font-family: Verdana, Geneva, sans-serif;
+          font-size: 150%;
+        }
+      }
+    }
+  }
+ }
+
+// for destop css
+body.desktop {
+  .container.wrapper {
+    #main-box{
+      form {
+        position: relative;
+        margin-right: 40px;
+        .field{
+          padding: 0 0 20px 170px;
+          position: relative;
+        }
+        .reset{
+          margin-right: 20px;
+        }
+        .reset label {
+          top: 3px;
+        }
+        label{
+          width: 150px;
+          position: absolute;
+          margin-right: 20px;
+          text-align: right;
+          font-weight: 100;
+          font-size: 14px;
+          left: 0;
+          top: 6px;
+        }
+
+        label.inline{
+          position: static;
+          width: auto;
+        }
+
+        input[type='text']{
+          width: 280px;
+        } 
+
+        textarea.text {
+          width: 520px;
+          height: 100px;
+        }
+
+        .text{
+          background: #fff;
+          border: 1px solid #ddd;
+          border-top: 1px solid #888;
+          padding: 5px;
+          -moz-border-radius: 3px;
+          -webkit-border-radius: 3px;
+          border-radius: 3px;
+        }
+
+        .actions{
+          input[type='submit'] {
+            padding: 4px 15px;
+            font-size: 123.1%;
+            font-weight: bold;
+            -moz-border-radius: 15px;
+            -webkit-border-radius: 15px;
+            border-radius: 15px;
+            font-weight: 100;
+            font-size: 14px;
+          }
+        }
       }
     }
   }
