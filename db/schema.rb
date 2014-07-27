@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723143209) do
+ActiveRecord::Schema.define(version: 20140727032631) do
+
+  create_table "job_subs", force: true do |t|
+    t.string   "email"
+    t.integer  "language"
+    t.boolean  "confirm"
+    t.string   "confirm_token"
+    t.boolean  "enable"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "job_subs", ["confirm"], name: "index_job_subs_on_confirm", using: :btree
+  add_index "job_subs", ["email", "confirm_token", "language"], name: "index_job_subs_on_email_and_confirm_token_and_language", unique: true, using: :btree
+  add_index "job_subs", ["enable"], name: "index_job_subs_on_enable", using: :btree
+  add_index "job_subs", ["language"], name: "index_job_subs_on_language", using: :btree
 
   create_table "jobs", force: true do |t|
     t.string   "title"
