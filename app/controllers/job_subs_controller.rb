@@ -2,7 +2,7 @@ class JobSubsController < ApplicationController
 
   def create
     @sub = JobSub.new(sub_params)
-    @sub.language = 0
+    @sub.language = current_language
     if @sub.save
       redirect_to enhanced_referrer, :notice => '订阅确认邮件已发送到你邮箱，请去确认。'
     else

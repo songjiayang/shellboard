@@ -10,8 +10,11 @@ class ApplicationController < ActionController::Base
     head :bad_request
   end
 
-
   protected
+
+  def current_language
+    session[:language] || 0
+  end
 
   def enhanced_referrer
     request.referrer || root_path

@@ -20,7 +20,7 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
 
     respond_to do |format|
-      @job.language = 0
+      @job.language = current_language
       if @job.save
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
