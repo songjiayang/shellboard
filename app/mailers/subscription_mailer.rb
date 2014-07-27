@@ -1,14 +1,9 @@
 class SubscriptionMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "no-reply@shellboard.com"
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.subscription_mailer.confirm.subject
-  #
-  def confirm
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def confirm(job_sub)
+    @job_sub = JobSub.find(job_sub)
+    
+    mail to: @job_sub.email,  subject: "[#{ActionMailer::Base.default_url_options[:host]}]#{@job_sub.language_capitalize}订阅列表确认"
   end
 end

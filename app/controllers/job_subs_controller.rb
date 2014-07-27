@@ -4,6 +4,7 @@ class JobSubsController < ApplicationController
     @sub = JobSub.new(sub_params)
     @sub.language = current_language
     if @sub.save
+      SubscriptionMailer.confirm(@sub.id).deliver
       redirect_to enhanced_referrer, :notice => '订阅确认邮件已发送到你邮箱，请去确认。'
     else
       redirect_to enhanced_referrer, :alert => @sub.errors.to_a.first
@@ -11,10 +12,12 @@ class JobSubsController < ApplicationController
   end
 
   def confirm
-    @sub = SubJob.find(params[:id])
+    @sub = JobSub.find(params[:id])
     raise BadRequest if @sub.confirm_token != params[:confirm_token]
     if @sub.confirm!
+      redirect_to root_path, :notice => '订阅邮件已通过确认，你将获得最新工作信息。'
     else
+      redirect_to root_path, :alert => '订阅邮件确认失败。'
     end
   end
 

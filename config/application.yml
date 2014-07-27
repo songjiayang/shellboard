@@ -6,9 +6,11 @@ defaults: &defaults
   smtp_settings:
     address: "smtp.gmail.com"
     port: 587
-    domain: "shellbaord.com"
-    user_name: "shellbaord"
-    password : "secret"
+    domain: "shellboard.com"
+    user_name: "songjiayang1@gmail.com"
+    password : "password"
+
+  domain: "shellboard.com:3000"
 
 development:
   <<: *defaults
@@ -19,3 +21,4 @@ test:
 
 production:
   <<: *defaults
+  domain: "shellboard.com"

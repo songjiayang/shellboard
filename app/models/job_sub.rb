@@ -20,18 +20,22 @@
 #
 
 class JobSub < ActiveRecord::Base
+  include LanguageAble
 
   validates :email, :language, :confirm_token, presence: true
-  validates :language, :inclusion => { :in => 0..Job::LANGUAGE.length }
-
   validates :email, format: { with: /\A[\w\d]+?[\w\d\-_.+]*?@[\w\d\-_.]+?\.\w+\z/i }
-                    
   validates :email, uniqueness: { scope: :language }
+
+  validates :language, :inclusion => { :in => 0..Job::LANGUAGE.length }
 
   before_validation :set_confirm_token, on: :create
 
   def confirm!
     self.update_attributes!(confirm: true)  
+  end
+
+  def domin
+    "http://#{self.language_humanize}.#{ActionMailer::Base.default_url_options[:host]}"
   end
 
   private

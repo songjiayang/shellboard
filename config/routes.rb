@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
   constraints(LanguageSubdomain) do
     resources :jobs
-    resources :job_subs, only: [:create]
+    resources :job_subs, only: [:create] do 
+      member do 
+        get :confirm
+      end
+    end
 
     root :to => "jobs#index" 
   end
