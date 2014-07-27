@@ -3,6 +3,13 @@ defaults: &defaults
     name: 'dhh'
     password: 'secret'
 
+  smtp_settings:
+    address: "smtp.gmail.com"
+    port: 587
+    domain: "shellbaord.com"
+    user_name: "shellbaord"
+    password : "secret"
+
 development:
   <<: *defaults
   neat_setting: 800
