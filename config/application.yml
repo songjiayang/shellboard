@@ -1,0 +1,24 @@
+defaults: &defaults
+  authentication: 
+    name: 'dhh'
+    password: 'secret'
+
+  smtp_settings:
+    address: "smtp.gmail.com"
+    port: 587
+    domain: "shellboard.com"
+    user_name: "songjiayang1@gmail.com"
+    password : "password"
+
+  domain: "shellboard.com:3000"
+
+development:
+  <<: *defaults
+  neat_setting: 800
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
+  domain: "shellboard.com"

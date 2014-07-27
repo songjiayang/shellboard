@@ -21,6 +21,7 @@
 #
 
 class Job < ActiveRecord::Base
+  include LanguageAble
 
   validates :title, :company_name, :location, :description, 
               :apply_information, :identifier, presence: true
@@ -33,10 +34,10 @@ class Job < ActiveRecord::Base
   LANGUAGE = %w(ruby) 
  
   validates :job_type, :inclusion => { :in => 0..JOB_TYPE.length }
+  validates :language, :inclusion => { :in => 0..LANGUAGE.length }
   validates :occupation, :inclusion => { :in => 0..OCCUPATION.length }
   validates :aasm_state, :inclusion => { :in => [0, 1] }
   validates :city, :inclusion => { :in => 0..CITY.length }
-  validates :language, :inclusion => { :in => 0..LANGUAGE.length }
   validates :url, :format => { :with => %r{\Ahttps?://[^/?:]+?\.\w+?(?::[0-9]{1,5})?\/?[^\s:]*?\z}i }, allow_blank: true
 
   scope :latest, -> { order('id desc')} 

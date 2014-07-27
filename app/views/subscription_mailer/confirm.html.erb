@@ -1,0 +1,4 @@
+<p>
+  您的邮箱: <%=@job_sub.email%> 已经成功加入我们的<%=Job::LANGUAGE[@job_sub.language].to_s.capitalize%>订阅列表，只有当你确认邮件后方能收到最近的工作信息。<br/>
+  确认邮件请点击 <%=link_to "确认订阅", @job_sub.domin+confirm_job_sub_path(id: @job_sub.id, confirm_token: @job_sub.confirm_token)%>
+</p>

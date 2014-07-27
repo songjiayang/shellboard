@@ -22,6 +22,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'puma', '~> 2.9.0'
 # for pagination https://github.com/amatsuda/kaminari
 gem 'kaminari', '~> 0.16.1'
+# A way simple configuration / settings solution  https://github.com/binarylogic/settingslogic
+gem 'settingslogic', '~> 2.0.9'
         
 group :development do 
 	# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

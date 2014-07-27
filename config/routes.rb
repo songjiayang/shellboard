@@ -1,7 +1,23 @@
+class LanguageSubdomain
+  def self.matches?(request)
+    language_index = Job::LANGUAGE.index(request.subdomain)
+    request.session[:language] = language_index
+  end
+end
+
 Rails.application.routes.draw do
 
-  resources :jobs
+  constraints(LanguageSubdomain) do
+    resources :jobs
+    resources :job_subs, only: [:create] do 
+      member do 
+        get :confirm
+      end
+    end
 
-  root :to => "jobs#index"
+    root :to => "jobs#index" 
+  end
+
+  # root :to => "jobs#index" 
 
 end

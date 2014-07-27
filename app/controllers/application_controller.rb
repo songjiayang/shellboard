@@ -3,6 +3,23 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  class Error < StandardError; end
+  class BadRequest < Error; end
+
+  rescue_from BadRequest do |e|
+    head :bad_request
+  end
+
+  protected
+
+  def current_language
+    session[:language] || 0
+  end
+
+  def enhanced_referrer
+    request.referrer || root_path
+  end
+
 
   private
 
@@ -10,5 +27,5 @@ class ApplicationController < ActionController::Base
     request.user_agent =~ /Mobile|webOS/
   end
 
-  helper_method :mobile_device?
+  helper_method :mobile_device?, :current_language
 end

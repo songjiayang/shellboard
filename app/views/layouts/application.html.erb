@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%=title%></title>
+    <title><%= content_for?(:title) ? yield(:title) : title%></title>
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <%= stylesheet_link_tag   'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   
-  <body class="ruby <%=mobile_device? ? 'mobile' : 'desktop'%>">
+  <body class="<%=current_language_humanize%> <%=mobile_device? ? 'mobile' : 'desktop'%>">
     <div class='container wrapper'>
 
       <header class='row'>
@@ -18,28 +18,29 @@
         <div class="col-xs-12 col-md-6 left">
           <div id="logo"></div>
           <a href='/'>
-            <h1><span class='lang'>Ruby</span>Jobs</h1>
-            <p>Job board for Ruby Developers in China</p>
+            <h1><span class='lang'><%=current_language_capitalize%></span>Jobs</h1>
+            <p>Job board for <%=current_language_capitalize%> Developers in China</p>
           </a>
         </div>
 
         <div class="col-xs-12 col-md-6 right">
-          <h3>Ruby 工作提醒</h3>
-          <p>中国最新的Ruby工作，将发送到你邮件（如果订阅成功）。</p>
-          <form class="form-horizontal" role="form">
+          <h3><%=current_language_capitalize%> 工作提醒</h3>
+          <p>中国最新的<%=current_language_capitalize%>工作，将发送到你邮件（如果订阅成功）。</p>
+          <%= form_for JobSub.new, :html => {:class => "form-horizontal"} do |f| %>
             <div class="form-group">
               <label for="inputEmail" class="control-label">邮箱:</label>
               <div class="email">
-                <input type="email" class="form-control" id="inputEmail" name='email' placeholder='<%="email" if mobile_device?%>'>
+                <%= f.email_field :email, class: "form-control", placeholder: "#{'email' if mobile_device?}" %>
               </div>
               <div class='submit'>
                 <button type="submit" class="btn btn-success">订 阅</button>
               <div>
             </div>
-          </form>
+          <%end%>
         </div>
       </header>
 
+      <%= render 'share/flash'%>
       <div id='main-box'>
         <div id='main-box-inner'>
           <%= yield %>
