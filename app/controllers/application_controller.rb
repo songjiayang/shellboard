@@ -27,5 +27,5 @@ class ApplicationController < ActionController::Base
     request.user_agent =~ /Mobile|webOS/
   end
 
-  helper_method :mobile_device?
+  helper_method :mobile_device?, :current_language
 end
