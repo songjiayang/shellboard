@@ -26,7 +26,7 @@
         <div class="col-xs-12 col-md-6 right">
           <h3>Ruby 工作提醒</h3>
           <p>中国最新的Ruby工作，将发送到你邮件（如果订阅成功）。</p>
-          <%= form_for JobSub.new, :html => {:class => "form-horizontal"}, :remote => true do |f| %>
+          <%= form_for JobSub.new, :html => {:class => "form-horizontal"} do |f| %>
             <div class="form-group">
               <label for="inputEmail" class="control-label">邮箱:</label>
               <div class="email">
@@ -40,6 +40,7 @@
         </div>
       </header>
 
+      <%= render 'share/flash'%>
       <div id='main-box'>
         <div id='main-box-inner'>
           <%= yield %>

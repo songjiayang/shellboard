@@ -26,7 +26,7 @@ class JobSub < ActiveRecord::Base
 
   validates :email, format: { with: /\A[\w\d]+?[\w\d\-_.+]*?@[\w\d\-_.]+?\.\w+\z/i }
                     
-  validates :email, uniqueness: { scope: [:language, :confirm_token] }
+  validates :email, uniqueness: { scope: :language }
 
   before_validation :set_confirm_token, on: :create
 

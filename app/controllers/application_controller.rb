@@ -11,6 +11,13 @@ class ApplicationController < ActionController::Base
   end
 
 
+  protected
+
+  def enhanced_referrer
+    request.referrer || root_path
+  end
+
+
   private
 
   def mobile_device?
