@@ -1,0 +1,14 @@
+# Sample configuration file for Sidekiq.
+# Options here can still be overridden by cmd line args.
+#   sidekiq -C config.yml
+---
+:verbose: false
+:pidfile: ./tmp/pids/sidekiq.pid
+:concurrency:  25
+:timeout: 30
+:queues:
+  - [default, 10]
+  - [mailer, 5]
+
+# production:
+#   :pidfile: /var/www/webapp/shared/pids/sidekiq.pid

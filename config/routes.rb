@@ -5,6 +5,8 @@ class LanguageSubdomain
   end
 end
 
+# require 'sidekiq/web'
+
 Rails.application.routes.draw do
 
   constraints(LanguageSubdomain) do
@@ -17,6 +19,8 @@ Rails.application.routes.draw do
 
     root :to => "jobs#index" 
   end
+
+  # mount Sidekiq::Web => '/sidekiq'
 
   # root :to => "jobs#index" 
 

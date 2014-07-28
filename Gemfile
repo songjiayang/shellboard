@@ -24,6 +24,9 @@ gem 'puma', '~> 2.9.0'
 gem 'kaminari', '~> 0.16.1'
 # A way simple configuration / settings solution  https://github.com/binarylogic/settingslogic
 gem 'settingslogic', '~> 2.0.9'
+# Delay job : https://github.com/mperham/sidekiq/wiki
+gem 'sidekiq', '~> 3.2.1'
+# gem 'sinatra', '>= 1.3.0', :require => nil
         
 group :development do 
 	# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -35,6 +38,7 @@ group :development do
 	gem 'capistrano-rails', '~> 1.1.1'
 	gem 'capistrano-bundler', '~> 1.1.2'
 	gem 'capistrano3-puma', '~> 0.6.1'
+  gem 'capistrano-sidekiq', '~> 0.3.5'
 
 	# Annotate the models attributes, https://github.com/ctran/annotate_models
 	gem 'annotate', '~> 2.6.5'
