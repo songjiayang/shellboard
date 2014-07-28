@@ -2,7 +2,6 @@ development: &default
   adapter: mysql2
   database: shellboard_dev
   pool: 25
-  password: 1qazwsx
   timeout: 5000
   encoding: utf8
 
@@ -13,6 +12,5 @@ production:
 test: &test
   <<: *default
   database: shellboard_test
-  password: 1qazwsx
   pool: 5
   timeout: 5000
