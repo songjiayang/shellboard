@@ -3,7 +3,7 @@ class JobsController < ApplicationController
   http_basic_authenticate_with name: Settings.authentication.name, password: Settings.authentication.password, except: [:index, :show]
 
   def index
-    @jobs = Job.latest.page(params[:page]).per(25)
+    @jobs = Job.with_language(current_language).latest.page(params[:page]).per(25)
   end
 
   def show
