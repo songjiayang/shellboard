@@ -41,6 +41,7 @@ class Job < ActiveRecord::Base
   validates :url, :format => { :with => %r{\Ahttps?://[^/?:]+?\.\w+?(?::[0-9]{1,5})?\/?[^\s:]*?\z}i }, allow_blank: true
 
   scope :latest, -> { order('id desc')} 
+  scope :with_language, -> (language){ where(language: language) }
 
   before_validation :set_identifier, :set_aasm_state, on: :create
 
