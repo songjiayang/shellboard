@@ -1,0 +1,27 @@
+<% job_link = @job_sub.domin+job_path(id: @job.id) %>
+<h3><%=link_to @job.title, job_link %></h3>
+<p><strong>公司名称:</strong><%=@job.company_name || "待补充" %></p>
+<p><strong>工作类型:</strong><%=Job::JOB_TYPE[@job.job_type]%></p>
+<p><strong>工作分类:</strong><%=Job::OCCUPATION[@job.occupation]%></p>
+<p><strong>工作地点:</strong><%=@job.location || "待补充" %></p>
+<%if @job.url%>
+  <p><strong>公司网站:</strong> <%= raw link_to @job.url,  @job.url%></p>
+<%end%>
+
+<div class='row'>
+  <div class='col-xs-12 col-md-12'>
+    <strong>工作描述:</strong>
+    <div class='job-description'>
+      <%= simple_format @job.description %>
+    </div>
+  </div>
+</div>
+
+<p>(<%=link_to "点击查看详情...", job_link%>)</p>
+
+<p>
+  点击 <%=link_to "修改订阅设置", @job_sub.domin+setting_job_sub_path(id: @job_sub.id, confirm_token: @job_sub.confirm_token)%>
+  可以修改邮件发送的频道。
+</p>
+
+

@@ -22,6 +22,7 @@ class JobsController < ApplicationController
     respond_to do |format|
       @job.language = current_language
       if @job.save
+        JobPushWorker.perform_async(@job.id)
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
       else

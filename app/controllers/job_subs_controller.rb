@@ -21,6 +21,11 @@ class JobSubsController < ApplicationController
     end
   end
 
+  def setting
+    @sub = JobSub.find(params[:id])
+    raise BadRequest if @sub.confirm_token != params[:confirm_token]
+  end
+
 
   private
 

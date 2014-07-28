@@ -29,6 +29,8 @@ class JobSub < ActiveRecord::Base
   validates :language, :inclusion => { :in => 0..Job::LANGUAGE.length }
 
   before_validation :set_confirm_token, on: :create
+  scope :with_language, -> (language){ where(language: language) }
+  scope :confirmed, -> { where(confirm: true) }
 
   def confirm!
     self.update_attributes!(confirm: true)  

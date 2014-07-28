@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :job_subs, only: [:create] do 
       member do 
         get :confirm
+        get :setting
       end
     end
 
