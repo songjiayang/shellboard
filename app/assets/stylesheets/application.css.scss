@@ -53,6 +53,7 @@ body {
               display: block;
               float: left;
               margin-right: 10px;
+              margin-top:5px;  //by unkeltao
             }
             .email{
               float: left;
@@ -61,14 +62,14 @@ body {
             .submit{
               float: left;
               button{
-                font-size: 12px;
+                font-size: 14px;  //by unkeltao, 12px
                 padding: 2px 6px;
-                margin-top: 6px;
+                margin-top: 7px;  //by unkeltao, 6px
               }
             }
             input[type='email']{
-              height: 20px;
-              margin-top: 8px;
+              height: 30px;  // by unkeltao, 20px
+              margin-top: 5px; //by unkeltao, 8px
             }
           }
         }
