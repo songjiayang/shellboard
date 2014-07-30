@@ -30,7 +30,9 @@ add `127.0.0.1   shellbaord.com` to `/etc/hosts`
 
 
 ### How to deploy to production ?
-comming soon ..
+```
+cap productin deploy
+```
 
 
 ### User Stories
