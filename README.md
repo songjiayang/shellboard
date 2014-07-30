@@ -43,5 +43,16 @@ comming soon ..
 6. comming soon ...
 
 
+### Contributors
+
+- songjiayang <a href="mailto:songjiayang1@gmail.com">songjiayang1@gmail.com</a>
+- UnkelTao <a href="mailto:wangyue121519@gmail.com">wangyue121519@gmail.com</a>
+
+
+### License
+
+- The code is licensed under the MIT License
+
+
 
 
