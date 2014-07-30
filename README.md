@@ -51,6 +51,11 @@ cap productin deploy
 - UnkelTao <a href="mailto:wangyue121519@gmail.com">wangyue121519@gmail.com</a>
 
 
+### New fetures you want or talk about?
+
+https://github.com/songjiayang/shellboard/issues
+
+
 ### License
 
 - The code is licensed under the MIT License
