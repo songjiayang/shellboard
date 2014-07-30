@@ -3,7 +3,7 @@ This is a full free and open source based on ruby on rails web application. it f
 
 you can visit http://ruby.shellboard.com to see demo.
 
-ref: 
+Reference sites: 
 
 1. http://jobs.rubynow.com/   
 2. http://jobs.ruby.tw/   
