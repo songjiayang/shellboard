@@ -41,7 +41,9 @@ cap productin deploy
 3. Add email to subscription list.
 4. Sent new job email to the list users.
 5. Different themes for different lanuage page.
-6. comming soon ...
+6. User can post a job, and manage self posts.
+7. Admin can login and list all unconfirm posts.
+8. Admin can confirm posts
 
 
 ### Contributors
