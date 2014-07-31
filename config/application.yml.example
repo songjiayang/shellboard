@@ -10,7 +10,7 @@ defaults: &defaults
     user_name: "songjiayang1@gmail.com"
     password : "password"
 
-  domain: "shellboard.com:3000"
+  domain: "shellboard.dev:3000"
 
 development:
   <<: *defaults
