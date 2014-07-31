@@ -8,5 +8,9 @@ module LanguageAble
   def language_capitalize
     language_humanize.capitalize
   end
+
+  def domin
+    "http://#{self.language_humanize}.#{ActionMailer::Base.default_url_options[:host]}"
+  end
   
 end

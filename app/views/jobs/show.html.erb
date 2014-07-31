@@ -6,7 +6,7 @@
   <div class='row'>
     <p class='date col-xs-12 col-md-6'>
       张贴日期: <%=@job.created_at.to_date%>
-      有效期限: <%=(@job.created_at+1.month).to_date%>
+      有效期限: <%=@job.deadline%>
     </p>
 
     <div class="social col-xs-12 col-md-6">

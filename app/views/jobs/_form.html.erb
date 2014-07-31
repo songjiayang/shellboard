@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+  <%= hidden_field_tag :identifier, @identifier%>
   <div class="field">
     <%= f.label "招聘标题" %>
     <%= f.text_field :title, class: 'text' %>
@@ -63,7 +64,15 @@
 
   <div class="field">
     <%= f.label "结束日期" %>
-    <%= f.text_field :deadline, class: 'text' %>
+    <%= f.date_field :deadline, class: 'text' %>
+    <br/>
+    不填写默认表示1个月
+  </div>
+  <div class="field">
+    <%= f.label "管理邮箱" %>
+    <%= f.email_field :email, class: 'text' %>
+    <br/>
+    此信息管理链接将发送至管理邮箱（可以为空）
   </div>
   <div class="actions pull-right">
     <%= link_to '返回', jobs_path %>

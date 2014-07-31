@@ -1,9 +1,9 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
-  http_basic_authenticate_with name: Settings.authentication.name, password: Settings.authentication.password, except: [:index, :show]
+  http_basic_authenticate_with name: Settings.authentication.name, password: Settings.authentication.password, only: [:destroy]
 
   def index
-    @jobs = Job.with_language(current_language).latest.page(params[:page]).per(25)
+    @jobs = Job.confirmed.with_language(current_language).latest.page(params[:page]).per(25)
     respond_to do |format|
       format.html 
       format.xml { render xml: @jobs.to_xml(:only => [:id, :title, :title, :url, :description ,:created_at ]) }
@@ -11,6 +11,7 @@ class JobsController < ApplicationController
   end
 
   def show
+    render_404 if params[:identifier] != @job.identifier && !@job.confirm
   end
 
   def new
@@ -18,6 +19,8 @@ class JobsController < ApplicationController
   end
 
   def edit
+    @identifier  = params[:identifier]
+    raise BadRequest if @job.identifier != @identifier
   end
 
   def create
@@ -26,8 +29,9 @@ class JobsController < ApplicationController
     respond_to do |format|
       @job.language = current_language
       if @job.save
-        JobPushWorker.perform_async(@job.id)
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        JobsMailer.delay.sent_manage_token(@job.id) if @job.email
+        # JobPushWorker.perform_async(@job.id)
+        format.html { redirect_to job_path(id: @job.id, identifier: @job.identifier), notice: 'Job was successfully created. waiting for admin confirm' }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }
@@ -37,9 +41,10 @@ class JobsController < ApplicationController
   end
 
   def update
+    raise BadRequest if @job.identifier != params[:identifier]
     respond_to do |format|
       if @job.update(job_params)
-        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
+        format.html { redirect_to job_path(id: @job.id, identifier: @job.identifier), notice: 'Job was successfully updated.' }
         format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
@@ -63,7 +68,7 @@ class JobsController < ApplicationController
     end
 
     def job_params
-      params.require(:job).permit(:title, :job_type, :company_name, :occupation, 
+      params.require(:job).permit(:title, :job_type, :company_name, :occupation, :email,
                         :location, :description, :apply_information, :deadline, :city, :url)
     end
 end

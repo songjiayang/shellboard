@@ -18,6 +18,12 @@
 #  language          :integer
 #  created_at        :datetime
 #  updated_at        :datetime
+#  email             :string(255)
+#  confirm           :boolean
+#
+# Indexes
+#
+#  index_jobs_on_confirm  (confirm)
 #
 
 class Job < ActiveRecord::Base
@@ -42,13 +48,19 @@ class Job < ActiveRecord::Base
 
   scope :latest, -> { order('id desc')} 
   scope :with_language, -> (language){ where(language: language) }
+  scope :confirmed, -> { where('confirm = true') }
 
-  before_validation :set_identifier, :set_aasm_state, on: :create
+  before_validation :set_identifier, :set_deadline, :set_aasm_state, on: :create
+
 
   private
 
   def set_identifier
     self.identifier = SecureRandom.hex(32)
+  end
+
+  def set_deadline
+    self.deadline = (Time.now + 1.month).to_date unless self.deadline
   end
 
   def set_aasm_state

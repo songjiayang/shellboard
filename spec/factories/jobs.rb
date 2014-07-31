@@ -18,6 +18,12 @@
 #  language          :integer
 #  created_at        :datetime
 #  updated_at        :datetime
+#  email             :string(255)
+#  confirm           :boolean
+#
+# Indexes
+#
+#  index_jobs_on_confirm  (confirm)
 #
 
 # Read about factories at https://github.com/thoughtbot/factory_girl

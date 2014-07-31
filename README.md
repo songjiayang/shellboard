@@ -25,6 +25,7 @@ rake db:migrate
 rails server
 ```
 add `127.0.0.1   shellbaord.dev` to `/etc/hosts`
+visit http://ruby.shellboard.dev:3000/
 
 
 ### How to deploy to production ?

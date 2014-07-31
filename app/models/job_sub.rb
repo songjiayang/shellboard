@@ -36,10 +36,6 @@ class JobSub < ActiveRecord::Base
     self.update_attributes!(confirm: true)  
   end
 
-  def domin
-    "http://#{self.language_humanize}.#{ActionMailer::Base.default_url_options[:host]}"
-  end
-
   private
 
   def set_confirm_token
