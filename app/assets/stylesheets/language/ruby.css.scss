@@ -19,7 +19,11 @@ body.ruby{
     }
   }
 
-  #main-box{
+  #main-box,#top-nav{
     a{ color: #b40e12;}
-  } 
+  }
+
+  #error_explanation {
+    color: #b40e12;
+  }
 }

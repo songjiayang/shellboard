@@ -12,6 +12,10 @@
   
   <body class="<%=current_language_humanize%> <%=mobile_device? ? 'mobile' : 'desktop'%>">
     <div class='container wrapper'>
+      <div id="top-nav" class="pull-right">
+        <%= link_to "我是雇主", new_job_path%>|
+        <%= link_to "RSS", jobs_path(format: :xml), class: 'rss'%>
+      </div>
 
       <header class='row'>
 

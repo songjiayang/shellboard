@@ -4,6 +4,10 @@ class JobsController < ApplicationController
 
   def index
     @jobs = Job.with_language(current_language).latest.page(params[:page]).per(25)
+    respond_to do |format|
+      format.html 
+      format.xml { render xml: @jobs.to_xml(:only => [:id, :title, :title, :url, :description ,:created_at ]) }
+    end
   end
 
   def show

@@ -24,6 +24,14 @@ body {
     width: 70%;
     h1 { font-size: 56px; }
 
+    a.rss{
+      padding: 2px 22px 2px 0;
+      margin: -2px 0;
+      background-repeat: no-repeat;
+      background-position: right center;
+      background-image: url(asset-path('feed.png'));
+    }
+
     header{
       a { 
         color: #000;
@@ -83,6 +91,12 @@ body {
         background: url(asset-path('paper-crease.png')) right bottom no-repeat;
         padding: 20px 20px 63px;
         position: relative;
+
+        #error_explanation{
+          padding-bottom: 10px;
+          li{ margin-bottom: 5px; }
+        }
+        .field_with_errors { display: inline; }
 
         .pagetitle{
           border-bottom: 1px solid #e6ebec;
