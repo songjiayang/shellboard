@@ -49,9 +49,14 @@ class Job < ActiveRecord::Base
   scope :latest, -> { order('id desc')} 
   scope :with_language, -> (language){ where(language: language) }
   scope :confirmed, -> { where('confirm = true') }
+  scope :unconfirmed, -> { where('confirm = false or confirm is null') }
 
   before_validation :set_identifier, :set_deadline, :set_aasm_state, on: :create
 
+
+  def confirm!
+    self.update_attributes!(confirm: true)  
+  end
 
   private
 

@@ -11,4 +11,8 @@ module ApplicationHelper
   def current_language_capitalize
     @current_language_capitalize ||=  current_language_humanize.capitalize
   end
+
+  def admin?
+    session[:admin]
+  end
 end

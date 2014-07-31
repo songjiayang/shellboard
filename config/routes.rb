@@ -5,12 +5,18 @@ class LanguageSubdomain
   end
 end
 
-require 'sidekiq/web'
+class CanAccessAdmin
+  def self.matches?(request)
+    request.session[:admin]
+  end
+end
+
+# require 'sidekiq/web'
 
 Rails.application.routes.draw do
 
   constraints(LanguageSubdomain) do
-    resources :jobs
+    resources :jobs, except: [:destroy]
     resources :job_subs, only: [:create] do 
       member do 
         get :confirm
@@ -21,7 +27,18 @@ Rails.application.routes.draw do
     root :to => "jobs#index" 
   end
 
-  mount Sidekiq::Web => '/sidekiq'
+  namespace :admin do
+    constraints(CanAccessAdmin) do
+      resources :jobs, only: [:index, :show] do 
+        member do 
+          post :confirm
+        end
+      end
+    end
+    get '/login', to: 'sessions#new' 
+  end
+
+  # mount Sidekiq::Web => '/sidekiq'
 
   # root :to => "jobs#index" 
 

@@ -1,6 +1,5 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
-  http_basic_authenticate_with name: Settings.authentication.name, password: Settings.authentication.password, only: [:destroy]
+  before_action :set_job, only: [:show, :edit, :update]
 
   def index
     @jobs = Job.confirmed.with_language(current_language).latest.page(params[:page]).per(25)
@@ -30,7 +29,6 @@ class JobsController < ApplicationController
       @job.language = current_language
       if @job.save
         JobsMailer.delay.sent_manage_token(@job.id) if @job.email
-        # JobPushWorker.perform_async(@job.id)
         format.html { redirect_to job_path(id: @job.id, identifier: @job.identifier), notice: 'Job was successfully created. waiting for admin confirm' }
         format.json { render :show, status: :created, location: @job }
       else
@@ -50,14 +48,6 @@ class JobsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  def destroy
-    @job.destroy
-    respond_to do |format|
-      format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
   

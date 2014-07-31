@@ -17,7 +17,11 @@
       <tr>
         <td><%= job.created_at.to_date %></td>
         <td>
-          <%= link_to job.title, job %>
+          <%if admin?%>
+            <%= link_to job.title, admin_job_path(job) %>
+          <%else%>
+            <%= link_to job.title, job %>
+          <%end%>
         </td>
         <%unless mobile_device? %>
           <td><%= job.company_name %></td>
