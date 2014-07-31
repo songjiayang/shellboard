@@ -22,9 +22,9 @@ cp config/application.yml.example config/application.yml
 bundle
 rake db:create
 rake db:migrate
-rails server
+rails s
 ```
-add `127.0.0.1   shellbaord.dev` to `/etc/hosts`
+add `127.0.0.1   shellbaord.dev` to `/etc/hosts`  
 visit http://ruby.shellboard.dev:3000/
 
 
