@@ -20,7 +20,7 @@ class Admin::JobsController < ApplicationController
 
   def confirm
     if @job.confirm!
-      JobPushWorker.perform_async(@job.id)
+      JobPushWorker.perform_async(@job.id) if params[:sent_email]
       redirect_to admin_jobs_path, notice: '已经通过验证。' 
     else
       redirect_to admin_job_path(@job), :alert => "通过验证失败"

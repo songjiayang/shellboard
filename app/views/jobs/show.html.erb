@@ -74,6 +74,7 @@
   <%= link_to '返回', jobs_path, class: 'back' %>
   <%if admin?%>
     <%= link_to '通过验证', confirm_admin_job_path(@job), class: 'back', method: :post%>
+    <%= link_to '通过验证并发送邮件', confirm_admin_job_path(id: @job.id, sent_email: true), class: 'back', method: :post%>
     <%= link_to '删除', admin_job_path(@job), class: 'back', method: :delete,  data: { confirm: 'Are you sure?' } %>
   <%end%>
 </div>
