@@ -27,6 +27,8 @@ gem 'settingslogic', '~> 2.0.9'
 # Delay job : https://github.com/mperham/sidekiq/wiki
 gem 'sidekiq', '~> 3.2.1'
 gem 'sinatra', '>= 1.3.0', :require => nil
+#For performance activity tracker
+gem 'newrelic_rpm', '~> 3.9.1.236'
         
 group :development do 
 	# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
