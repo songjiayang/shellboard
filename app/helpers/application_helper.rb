@@ -12,7 +12,7 @@ module ApplicationHelper
     @current_language_capitalize ||=  current_language_humanize.capitalize
   end
 
-  def admin?
-    session[:admin]
+  def jobs_cache_key(page)
+    Job.with_language(current_language).latest.first.try(:updated_at).to_s + page.to_s
   end
 end

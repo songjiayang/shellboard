@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     constraints(CanAccessAdmin) do
-      resources :jobs, only: [:index, :show, :destroy] do 
+      resources :jobs, only: [:index, :destroy] do 
         member do 
           post :confirm
         end

@@ -1,80 +1,82 @@
 <%content_for :title, @job.title%>
-
 <div class='job-content'>
-  <h4 class='job-title'><%=@job.title%></h4>
+  <% cache @job.updated_at do %>
+    <h4 class='job-title'><%=@job.title%></h4>
 
-  <div class='row'>
-    <p class='date col-xs-12 col-md-6'>
-      张贴日期: <%=@job.created_at.to_date%>
-      有效期限: <%=@job.deadline%>
-    </p>
-
-    <div class="social col-xs-12 col-md-6">
-     <!-- JiaThis Button BEGIN -->
-      <div class="jiathis_style">
-        <a class="jiathis_button_weixin"></a>
-        <a class="jiathis_button_tsina"></a>
-      </div>
-      <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=1399190709098277" charset="utf-8"></script>
-      <!-- JiaThis Button END -->
-    </div>
-  </div>
-
-  <div class='job-info'>
     <div class='row'>
-      <div class='col-xs-12 col-md-6'>
-        <strong>工作类型:</strong>
-          <%= Job::JOB_TYPE[@job.job_type]%>
-      </div>
+      <p class='date col-xs-12 col-md-6'>
+        张贴日期: <%=@job.created_at.to_date%>
+        有效期限: <%=@job.deadline%>
+      </p>
 
-      <div class='col-xs-12 col-md-6 '>
-         <strong>工作分类:</strong>
-          <%= Job::OCCUPATION[@job.occupation]%>
+      <div class="social col-xs-12 col-md-6">
+       <!-- JiaThis Button BEGIN -->
+        <div class="jiathis_style">
+          <a class="jiathis_button_weixin"></a>
+          <a class="jiathis_button_tsina"></a>
+        </div>
+        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js?uid=1399190709098277" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
       </div>
     </div>
 
-    <div class='row'>
-      <div class='col-xs-12 col-md-6'>
-         <strong>公司名称:</strong>
-          <%= @job.company_name%>
-      </div>
+    <div class='job-info'>
+      <div class='row'>
+        <div class='col-xs-12 col-md-6'>
+          <strong>工作类型:</strong>
+            <%= Job::JOB_TYPE[@job.job_type]%>
+        </div>
 
-      <div class='col-xs-12 col-md-6 '>
-         <strong>工作地点:</strong>
-          <%= @job.location%>
-      </div>
-    </div>
-
-    <div class='row'>
-      <div class='col-xs-12 col-md-12'>
-         <strong>公司网站:</strong>
-         <%= raw link_to @job.url,  @job.url, :target => "_blank" %>
-      </div>
-    </div>
-
-    <div class='row'>
-      <div class='col-xs-12 col-md-12'>
-        <strong>工作描述:</strong>
-        <div class='job-description'>
-          <%= simple_format @job.description %>
+        <div class='col-xs-12 col-md-6 '>
+           <strong>工作分类:</strong>
+            <%= Job::OCCUPATION[@job.occupation]%>
         </div>
       </div>
-    </div>
 
-    <div class='row'>
-      <div class='col-xs-12 col-md-12'>
-        <strong>如何应征:</strong>
-        <div class='job-applyinformation'>
-          <%= simple_format @job.apply_information%>
-         </div>
+      <div class='row'>
+        <div class='col-xs-12 col-md-6'>
+           <strong>公司名称:</strong>
+            <%= @job.company_name%>
+        </div>
+
+        <div class='col-xs-12 col-md-6 '>
+           <strong>工作地点:</strong>
+            <%= @job.location%>
+        </div>
       </div>
-    </div>
 
-  </div>
+      <div class='row'>
+        <div class='col-xs-12 col-md-12'>
+           <strong>公司网站:</strong>
+           <%= raw link_to @job.url,  @job.url, :target => "_blank" %>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-xs-12 col-md-12'>
+          <strong>工作描述:</strong>
+          <div class='job-description'>
+            <%= simple_format @job.description %>
+          </div>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-xs-12 col-md-12'>
+          <strong>如何应征:</strong>
+          <div class='job-applyinformation'>
+            <%= simple_format @job.apply_information%>
+           </div>
+        </div>
+      </div>
+
+    </div>
+  <%end%>
   <%= link_to '返回', jobs_path, class: 'back' %>
   <%if admin?%>
     <%= link_to '通过验证', confirm_admin_job_path(@job), class: 'back', method: :post%>
     <%= link_to '通过验证并发送邮件', confirm_admin_job_path(id: @job.id, sent_email: true), class: 'back', method: :post%>
+    <%= link_to '修改', edit_job_path(@job), class: 'back'%>
     <%= link_to '删除', admin_job_path(@job), class: 'back', method: :delete,  data: { confirm: 'Are you sure?' } %>
   <%end%>
 </div>

@@ -1,9 +1,12 @@
 class Admin::JobsController < ApplicationController
-  before_action :set_job, only: [:show, :destroy, :confirm]
+  before_action :set_job, only: [:destroy, :confirm]
 
   def index
-    @jobs = Job.unconfirmed.with_language(current_language).latest.page(params[:page]).per(25)
-    render 'jobs/index' 
+    if params[:all]
+      @jobs = Job.with_language(current_language).newest.page(params[:page])
+    else
+      @jobs = Job.unconfirmed.with_language(current_language).newest.page(params[:page])
+    end
   end
 
   def destroy
@@ -12,10 +15,6 @@ class Admin::JobsController < ApplicationController
       format.html { redirect_to admin_jobs_url, notice: 'Job was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def show
-    render 'jobs/show'
   end
 
   def confirm
@@ -32,4 +31,5 @@ class Admin::JobsController < ApplicationController
   def set_job
     @job = Job.find(params[:id])
   end
+
 end

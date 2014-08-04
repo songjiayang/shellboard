@@ -32,7 +32,7 @@ class Job < ActiveRecord::Base
   validates :title, :company_name, :location, :description, 
               :apply_information, :identifier, presence: true
 
-  JOB_TYPE = %w(Full-time Part-time Contract Internship Other)
+  JOB_TYPE = %w(全职 兼职 合同 实习 其他)
   OCCUPATION = ['Web back-end', 'Web front-end', 'Web-design',
                 'QA/Testing', 'Other'] 
   ASSM_STATE = %w(published closed)
@@ -46,7 +46,8 @@ class Job < ActiveRecord::Base
   validates :city, :inclusion => { :in => 0..CITY.length }
   validates :url, :format => { :with => %r{\Ahttps?://[^/?:]+?\.\w+?(?::[0-9]{1,5})?\/?[^\s:]*?\z}i }, allow_blank: true
 
-  scope :latest, -> { order('id desc')} 
+  scope :newest, -> { order('id desc')} 
+  scope :latest, -> { order('updated_at desc')} 
   scope :with_language, -> (language){ where(language: language) }
   scope :confirmed, -> { where('confirm = true') }
   scope :unconfirmed, -> { where('confirm = false or confirm is null') }

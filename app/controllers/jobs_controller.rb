@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update]
 
   def index
-    @jobs = Job.confirmed.with_language(current_language).latest.page(params[:page]).per(25)
+    @jobs = Job.confirmed.with_language(current_language).newest.page(params[:page])
     respond_to do |format|
       format.html 
       format.xml { render xml: @jobs.to_xml(:only => [:id, :title, :title, :url, :description ,:created_at ]) }
@@ -10,7 +10,7 @@ class JobsController < ApplicationController
   end
 
   def show
-    render_404 if params[:identifier] != @job.identifier && !@job.confirm
+    render_404 if !admin? && params[:identifier] != @job.identifier && !@job.confirm
   end
 
   def new
@@ -19,7 +19,7 @@ class JobsController < ApplicationController
 
   def edit
     @identifier  = params[:identifier]
-    raise BadRequest if @job.identifier != @identifier
+    raise BadRequest if !admin? && @job.identifier != @identifier
   end
 
   def create
@@ -29,7 +29,7 @@ class JobsController < ApplicationController
       @job.language = current_language
       if @job.save
         JobsMailer.delay.sent_manage_token(@job.id) if @job.email
-        format.html { redirect_to job_path(id: @job.id, identifier: @job.identifier), notice: 'Job was successfully created. waiting for admin confirm' }
+        format.html { redirect_to job_path(id: @job.id, identifier: @job.identifier), notice: '工作信息已经创建成功，等待管理员验证。' }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new }
@@ -39,10 +39,10 @@ class JobsController < ApplicationController
   end
 
   def update
-    raise BadRequest if @job.identifier != params[:identifier]
+    raise BadRequest if !admin? && @job.identifier != params[:identifier]
     respond_to do |format|
       if @job.update(job_params)
-        format.html { redirect_to job_path(id: @job.id, identifier: @job.identifier), notice: 'Job was successfully updated.' }
+        format.html { redirect_to job_path(id: @job.id, identifier: @job.identifier), notice: '工作信息修改成功！' }
         format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
