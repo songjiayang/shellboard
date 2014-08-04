@@ -136,6 +136,9 @@ body {
       }
     }
   }
+
+  // hide baidu statistics image
+  img[border="0"]{display:none;}
  }
 
 // for destop css
