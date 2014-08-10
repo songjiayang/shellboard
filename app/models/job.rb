@@ -37,7 +37,7 @@ class Job < ActiveRecord::Base
                 'QA/Testing', 'Other'] 
   ASSM_STATE = %w(published closed)
   CITY = %w(北京 上海 杭州 成都 广州 深圳 南京 武汉 西安 大连 青岛 苏州 其他)
-  LANGUAGE = %w(ruby) 
+  LANGUAGE = %w(ruby python php node erlang lua css) 
  
   validates :job_type, :inclusion => { :in => 0..JOB_TYPE.length }
   validates :language, :inclusion => { :in => 0..LANGUAGE.length }
