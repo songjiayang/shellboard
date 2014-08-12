@@ -11,6 +11,8 @@ defaults: &defaults
     password : "password"
 
   domain: "shellboard.dev:3000"
+  analytics:
+    google_id: "GOOGLE_CODE"
 
 development:
   <<: *defaults
