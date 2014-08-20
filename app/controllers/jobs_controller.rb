@@ -5,7 +5,6 @@ class JobsController < ApplicationController
     @jobs = Job.confirmed.with_language(current_language).newest.page(params[:page])
     respond_to do |format|
       format.html 
-      format.xml { render xml: @jobs.to_xml(:only => [:id, :title, :title, :url, :description ,:created_at ]) }
     end
   end
 
