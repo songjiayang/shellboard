@@ -54,7 +54,8 @@ class JobsController < ApplicationController
   private
 
     def set_job
-      @job = Job.find(params[:id])
+      @job = Job.find_by(id: params[:id], language: current_language)
+      render_404 unless @job
     end
 
     def job_params
