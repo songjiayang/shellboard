@@ -1,4 +1,5 @@
-#ShellBoard 
+# ShellBoard
+
 This is a full free and open source based on ruby on rails web application. it focus on the minority programing languages jobs (eg: ruby, go, lua ..) in china.
 
 Reference sites: 
@@ -6,7 +7,7 @@ Reference sites:
 1. http://jobs.rubynow.com/   
 2. http://jobs.ruby.tw/   
 
-###Requirements
+### Requirements
 
 1. Ruby 2.x
 2. Rails4.x
@@ -60,7 +61,3 @@ https://github.com/songjiayang/shellboard/issues
 ### License
 
 - The code is licensed under the MIT License
-
-
-
-
